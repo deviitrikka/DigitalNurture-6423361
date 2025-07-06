@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop 
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--  BookRepository bean -->
+    <bean id="bookRepository" class="com.library.BookRepository" />
+
+    <!--  BookService bean with constructor and setter injection -->
+    <bean id="bookService" class="com.library.BookService">
+        <!-- Constructor injection for libraryName -->
+        <constructor-arg value="National Library" />
+
+        <!-- Setter injection for BookRepository -->
+        <property name="bookRepository" ref="bookRepository" />
+    </bean>
+
+    <!-- Logging aspect bean -->
+    <bean id="loggingAspect" class="com.library.aspect.LoggingAspect" />
+
+    <!--  Enable AOP and declare pointcuts -->
+    <aop:config>
+        <aop:aspect ref="loggingAspect">
+
+            <!-- Before advice -->
+            <aop:before method="logBefore"
+                        pointcut="execution(* com.library.BookService.printBookTitle(..))" />
+
+            <!-- After advice -->
+            <aop:after method="logAfter"
+                       pointcut="execution(* com.library.BookService.printBookTitle(..))" />
+        </aop:aspect>
+    </aop:config>
+
+</beans>

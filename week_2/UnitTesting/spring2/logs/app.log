@@ -1,0 +1,4 @@
+16:44:44.921 [com.example.logging.LoggingExample.main()] ERROR com.example.logging.LoggingExample - This is an error message
+16:44:44.923 [com.example.logging.LoggingExample.main()] WARN  com.example.logging.LoggingExample - This is a warning message
+16:45:21.780 [com.example.logging.LoggingExample.main()] ERROR com.example.logging.LoggingExample - This is an error message
+16:45:21.783 [com.example.logging.LoggingExample.main()] WARN  com.example.logging.LoggingExample - This is a warning message
