@@ -1,0 +1,5 @@
+<message>This is a file in main Branch</message>
+<<<<<<< HEAD
+=======
+<message>This is a file in GitWork Branch</message>
+>>>>>>> Gitwork
